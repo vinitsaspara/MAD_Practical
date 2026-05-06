@@ -3,7 +3,7 @@ const router = express.Router();
 const Feedback = require('../models/Feedback');
 const User = require('../models/User');
 
-// POST /api/feedback — submit feedback
+
 router.post('/', async (req, res) => {
   try {
     const feedback = new Feedback(req.body);
