@@ -1,0 +1,54 @@
+name: mad
+description: "Smart Peer Tutoring & Session Matching App"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  provider: ^6.1.2
+
+  # Local Offline Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Network
+  dio: ^5.4.3
+
+  # Connectivity check
+  connectivity_plus: ^6.0.3
+
+  # Unique ID generation
+  uuid: ^4.3.3
+
+  # Date/time helpers
+  intl: ^0.19.0
+
+  # Ratings UI
+  flutter_rating_bar: ^4.0.1
+
+  # Shared Preferences (simple key-value store)
+  shared_preferences: ^2.2.3
+
+  # Path provider (for Hive init)
+  path_provider: ^2.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+  # Hive code generation
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
