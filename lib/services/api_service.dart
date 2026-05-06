@@ -99,7 +99,10 @@ class ApiService {
       if (minRating != null) q['minRating'] = minRating;
       final response = await _dio.get('/tutors', queryParameters: q);
       if (response.statusCode == 200 || response.statusCode == 304) {
-        return (response.data as List).map((e) => UserModel.fromJson(e)).toList();
+        if (response.data is List) {
+          return (response.data as List).map((e) => UserModel.fromJson(e)).toList();
+        }
+        return [];
       }
     } catch (e) {
       rethrow;

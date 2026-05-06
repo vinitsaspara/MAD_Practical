@@ -5,8 +5,12 @@ const User = require("../models/User");
 // GET /api/tutors?subject=&skillLevel=&minRating=
 router.get("/", async (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+
     const { subject, skillLevel, minRating } = req.query;
-    const query = { role: { $in: ["tutor", "both"] } };
+    const query = {};
 
     if (subject) {
       query.subjects = { $elemMatch: { $regex: new RegExp(subject, "i") } };

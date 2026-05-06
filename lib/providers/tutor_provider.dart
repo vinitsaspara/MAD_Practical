@@ -43,12 +43,14 @@ class TutorProvider extends ChangeNotifier {
     // Then refresh from API
     try {
       final apiTutors = await _apiService.getAllTutors();
-      for (final t in apiTutors) {
-        await HiveService.saveUser(t);
+      if (apiTutors.isNotEmpty) {
+        for (final t in apiTutors) {
+          await HiveService.saveUser(t);
+        }
+        _allTutors = apiTutors
+            .where((u) => learner == null || u.id != learner.id)
+            .toList();
       }
-      _allTutors = apiTutors
-          .where((u) => learner == null || u.id != learner.id)
-          .toList();
       _applyFilters(learner);
     } catch (e) {
       debugPrint('[TutorProvider] API fetch failed, using cached: $e');
